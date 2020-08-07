@@ -1,0 +1,8 @@
+title: Haoyu Wang
+email: why19930708@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  This portfolio includes selected works of Haoyu Wang
+  
+theme: minima
+
+show_excerpts: true # set to false to remove excerpts on the homepage
