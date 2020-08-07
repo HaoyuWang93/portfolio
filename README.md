@@ -1,2 +1,2 @@
-# portfolio
-Selected works of Haoyu Wang
+# Haoyu Wang
+Portfolio of Selected Works
