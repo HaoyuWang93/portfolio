@@ -1,0 +1,83 @@
+/* Description */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 999;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  padding: 20px;
+  background: white;
+  border-radius: 6px;
+  max-width: 90%;
+  max-height:70%;
+  position: relative;
+  top:15%;
+  margin:auto;
+  overflow:scroll;
+  overflow-x: hidden;
+}
+
+.popup .close {
+  position: absolute;
+  top: 1px;
+  right: 20px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #DC143C;
+}
+
+.popup h2 {
+  margin-top: 20px;
+  text-align:center;
+}
+.popup h3 {
+  text-align:center;
+  font-weight:600;
+}
+.popup .content {
+  max-height: 50%;
+  text-align:center;
+  overflow: scroll;
+  overflow-x:hidden;
+}
+
+@media screen and (max-width: 700px){
+  .popup{
+    width: 90%;
+  }
+}
+
+/* Scalebar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
