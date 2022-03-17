@@ -115,7 +115,7 @@ input, select, textarea {
 
 /* Type */
 body, input, select, textarea {
-	color: #585858;
+	color: #black;
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
 	font-size: 16pt;
 	font-weight: 300;
@@ -2323,7 +2323,7 @@ sup {
 		}
 
 		.image.left, .image.right {
-			max-width: 40%;
+			max-width: 45%;
 		}
 
 			.image.left img, .image.right img {
@@ -2354,7 +2354,16 @@ sup {
 
 		.image.main {
 			display: block;
-			margin: 0 0 3em 0;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
+		.image.vertical {
+			display: block;
+			margin-left: auto;
+  		margin-right: auto;
+			max-width: 800px;
 			width: 100%;
 		}
 
@@ -2706,23 +2715,29 @@ sup {
 			}
 
 			.tiles article.style-blue > .image:before {
-				background-color: #21404f;
+				background-color: #103040;
 			}
 
-			.tiles article.style-green > .image:before {
-				background-color: #274932;
+			.tiles article.style-cyan > .image:before {
+				background-color: #104030;
 			}
 
 			.tiles article.style-red > .image:before {
-				background-color: #9a3232;
+				background-color: #401010;
 			}
 
 			.tiles article.style-brown > .image:before {
-				background-color: #423324;
+				background-color: #403810;
 			}
 
-			.tiles article.style-grey > .image:before {
-				background-color: #4f4f4f;
+			.tiles article.style-green > .image:before {
+				background-color: #204010;
+			}
+			.tiles article.style-purple > .image:before {
+				background-color: #281040;
+			}
+			.tiles article.style-orange > .image:before {
+				background-color: #402810;
 			}
 
 			body:not(.is-touch) .tiles article:hover > .image {
@@ -3185,12 +3200,12 @@ sup {
 			}
 
 			#footer > .inner section:nth-child(1) {
-				width: calc(66% - 2.5em);
+				width: calc(100% - 2.5em);
 				margin-right: 2.5em;
 			}
 
 			#footer > .inner section:nth-child(2) {
-				width: calc(33% - 2.5em);
+				width: calc(100% - 2.5em);
 				margin-left: 2.5em;
 			}
 
@@ -3228,12 +3243,12 @@ sup {
 			}
 
 				#footer > .inner section:nth-child(1) {
-					width: calc(66% - 1.25em);
+					width: calc(100% - 1.25em);
 					margin-right: 1.25em;
 				}
 
 				#footer > .inner section:nth-child(2) {
-					width: calc(33% - 1.25em);
+					width: calc(100% - 1.25em);
 					margin-left: 1.25em;
 				}
 
@@ -3242,12 +3257,12 @@ sup {
 		@media screen and (max-width: 980px) {
 
 			#footer > .inner section:nth-child(1) {
-				width: 66%;
+				width: 100%;
 				margin-right: 0;
 			}
 
 			#footer > .inner section:nth-child(2) {
-				width: calc(33% - 2.5em);
+				width: calc(100% - 2.5em);
 				margin-left: 2.5em;
 			}
 
