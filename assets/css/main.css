@@ -2726,6 +2726,10 @@ sup {
 				background-color: #401010;
 			}
 
+			.tiles article.style-redoff > .image:before {
+				background-color: #402020;
+			}
+
 			.tiles article.style-brown > .image:before {
 				background-color: #403810;
 			}
