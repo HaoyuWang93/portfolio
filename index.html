@@ -1,214 +1,264 @@
-<!DOCTYPE HTML>
-<!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
+<!doctype html>
 <html>
-	<head>
-		<title>HAOYU WANG</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/addup.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
-			<img class="image main" src="images/cover.jpg" alt=""></img>
+<head>
+  <meta charset="UTF-8">
+  <title>Haoyu Wang</title>
+<script src="aframe/aframe.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/custom.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+<body>
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
-
-						</div>
-					</header>
-
-				<!-- Menu -->
-					<nav id="menu" style="padding:15px;">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<header>
-								<h1>ARCHITECTURAL FICTION</h1>
-								<p>Haoyu Wang - Selected works of observation, investigation, and imagination</p>
-							</header>
-							<section class="tiles">
+  <script>
+  AFRAME.registerComponent("enter0", {
+    init: function() {
+       var pieces = document.querySelectorAll(".act, .clickable")
+       this.el.addEventListener("click", e => {
+         for (let piece of pieces) {
+           piece.emit("show0")}
+       }, {once: true})
+     }
+  })
 
 
-								<article class="style-cyan">
-									<span class="image">
-										<img src="images/cover/paradise.jpg" alt="" />
-									</span>
-									<a href="paradise.html">
-										<h2>NOMADIC PARADISE</h2>
-										<p>Concept Design - Infrastructure<br>
-										Chasing the Flooded Pasts</p>
-									</a>
-								</article>
+  AFRAME.registerComponent("weblink", {
+  schema: {
+    url: {
+      default: ""
+    }
+  },
+  init: function() {
+    this.el.addEventListener("click", (e) => {
+      window.location = this.data.url;
+    })
+  }
+})
+</script>
 
-								<article class="style-blue">
-									<span class="image">
-										<img src="images/cover/fiction.jpg" alt="" />
-									</span>
-									<a href="https://haoyuwang93.github.io/anotherfuture/" target="_blank" rel="noopener noreferrer">
-										<h2>COVIDPUNK</h2>
-										<p>Interactive Storytelling<br>
-											Another Post-2020 World</p>
-									</a>
-								</article>
+<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse;"
+loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
+<a-camera wasd-controls-enabled="false"></a-camera>
 
-								<article class="style-purple">
-									<span class="image">
-										<img src="images/cover/megastructure.jpg" alt="" />
-									</span>
-									<a href="mega.html">
-										<h2>INFINITE CITY</h2>
-										<P>Architectural Imagination<br>
-										A City without Locality</P>
-									</a>
-								</article>
+  <a-assets>
+    <img id="sky" src="images/home.jpg" alt="background">
+    <img id="paradise" src="images/cover/paradise.jpg" alt="">
+    <img id="fiction" src="images/cover/fiction.jpg" alt="">
+    <img id="megastructure" src="images/cover/megastructure.jpg" alt="">
+    <img id="photo" src="images/cover/photo.jpg" alt="">
+    <img id="port" src="images/cover/port.jpg" alt="">
+    <img id="pencil" src="images/cover/pencil.jpg" alt="">
+    <img id="office" src="images/cover/office.jpg" alt="">
+    <img id="tallinn" src="images/cover/tallinn.jpg" alt="">
+    <img id="tangshan" src="images/cover/tangshan.jpg" alt="">
+    <img id="shinjuku" src="images/cover/shinjuku.jpg" alt="">
+    <img id="cafe" src="images/cover/cafe.jpg" alt="">
+    <img id="convertible" src="images/cover/convertible.jpg" alt="">
+  </a-assets>
 
-								<article class="style-green">
-									<span class="image">
-										<img src="images/cover/port.jpg" alt="" />
-									</span>
-									<a href="port.html">
-										<h2>HOME PORT</h2>
-										<P>Architectural Installation<br>
-										"For the Wellbeing of Everyone?"</P>
-									</a>
-								</article>
+  <a-sky src="#sky" rotation="0 -90 0"></a-sky>
 
-								<article class="style-red">
-									<span class="image">
-										<img src="images/cover/photo.jpg" alt="" />
-									</span>
-									<a href="https://haoyuwang93.github.io/photo/" target="_blank" rel="noopener noreferrer">
-										<h2>PHOTOGRAPHIC INQUIRY</h2>
-										<p>Photo Essays/ Blogs<br>
-										(updating by chance)</p>
-									</a>
-								</article>
+  <a-text class="clickable" line-height="100" width="3" rotation="0 0 0" scale="1"
+  geometry="primitive: plane; width: 1.65; height: 0.95;" material="shader: flat; color: white"
+  color="black" align="center" position="0 1.7 -2.5"
+  animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+  animation__close="startEvents: click; property: scale; to: 1; delay: 15000;"
+  value="ARCHITECTURAL FICTION
+  Haoyu Wang">
+  </a-text>
 
-								<article class="style-black">
-									<span class="image">
-										<img src="images/cover/pencil.jpg" alt="" />
-									</span>
-									<a href="pencil.html">
-										<h2>TOKYO PENCIL BUILDING</h2>
-										<p>Architectural design<br>
-										Alternative Vernacularity</p>
-									</a>
-								</article>
+  <a-text line-height="60" width="1.7" rotation="0 0 0"
+  color="black" align="center" position="0 1.7 -2.51"
+  value="Haoyu is an architect and urbanist working on
+  the spatial relationships of human conditions.
+  In addition to designing future places, he actively
+  explores architectural thoughts as a cultural
+  instrument in shaping public imagination.
+  He is currently developing an artistic genre of
+  architectural fiction that renders extreme futures
+  to communicate a broader scope of urban
+  anxieties beyond institutional gazes">
+  </a-text>
 
-								<article class="style-orange">
-									<span class="image">
-										<img src="images/cover/office.jpg" alt="" />
-									</span>
-									<a href="office.html">
-										<h2>LIVE-IN-OFFICE</h2>
-										<p>Architectural Remolding<br>
-										Downtown after Remote Work</p>
-									</a>
-								</article>
+  <a-image class="clickable"
+   src= "#paradise" scale="1" width="1" height="1" rotation="0 -90 0" position="2.5 1.7 -1.8"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
 
-								<article class="style-blue">
-									<span class="image">
-										<img src="images/cover/tallinn.jpg" alt="" />
-									</span>
-									<a href="tallinn.html">
-										<h2>THE CITY OF PLACELESSNESS</h2>
-										<p>Urban Design<br>
-										Residency of Digital Nomads</p>
-									</a>
-								</article>
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 -90 0" position="2.53 1.7 -1.8"
+    color="white" align="center"
+    value="NOMADIC Paradise
+    Concept Design
+    The flood past"
+    weblink="url: paradise.html">
+  </a-text>
 
-								<article class="style-green">
-									<span class="image">
-										<img src="images/cover/tangshan.jpg" alt="" />
-									</span>
-									<a href="tangshan.html">
-										<h2>TURNING POINT</h2>
-										<p>Urban Design<br>
-										Thermal Plant-> Green Icons</p>
-									</a>
-								</article>
+  <a-image class="clickable"
+   src= "#fiction" scale="1" width="1" height="1" rotation="0 -90 0" position="2.5 1.7 -0.6"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
 
-								<article class="style-black">
-									<span class="image">
-										<img src="images/cover/shinjuku.jpg" alt="" />
-									</span>
-									<a href="shinjuku.html">
-										<h2>MEGASTRUCTURAL PROCESS</h2>
-										<p>Urban Form Study<br>
-										The Shaping of Shinjuku Station</p>
-									</a>
-								</article>
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 -90 0" position="2.53 1.7 -0.6"
+    color="white" align="center"
+    value="COVIDPUNK
+    Interactive Storytelling
+    Another Post-2020"
+    weblink="url: https://haoyuwang93.github.io/anotherfuture/">
+  </a-text>
 
-								<article class="style-orange">
-									<span class="image">
-										<img src="images/cover/cafe.jpg" alt="" />
-									</span>
-									<a href="cafe.html">
-										<h2>CREATIVE CAFE</h2>
-										<p>Integrated Design<br>
-										Faculty, Students, and a Deaf Community</p>
-									</a>
-								</article>
+  <a-image class="clickable"
+   src= "#megastructure" scale="1" width="1" height="1" rotation="0 -90 0" position="2.5 1.7 0.6"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
 
-								<article class="style-red">
-									<span class="image">
-										<img src="images/cover/convertible.jpg" alt="" />
-									</span>
-									<a href="convertible.html">
-										<h2>CONVERTIBLE OFFICE</h2>
-										<p>Interior Design<br>
-										Pinifarina on Schedule</p>
-									</a>
-								</article>
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 -90 0" position="2.53 1.7 0.6"
+    color="white" align="center"
+    value="INFINITE CITY
+    Urban Imagination
+    Placeless sprawl"
+    weblink="url: mega.html">
+  </a-text>
 
-							</section>
-						</div>
-					</div>
+  <a-image class="clickable"
+   src= "#port"scale="1" width="1" height="1" rotation="0 -90 0" position="2.5 1.7 1.8"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
 
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 -90 0" position="2.53 1.7 1.8"
+    color="white" align="center"
+    value="HOME PORT
+    Building Installation
+    controlled Wellbeing"
+    weblink="url: port.html">
+  </a-text>
 
-				<!-- Footer -->
-				<footer id="footer">
-					<ul class="inner"
-					style="text-align:center; padding:10px;">
-						<section class="inner section">
-							<h2>CONTACT</h2>
-							<p><a href="mailto: hywang@alum.mit.edu">hywang@alum.mit.edu</a>
-							<br>Currently based in San Leandro, CA</p>
-						</section>
-						<ul class="copyright">
-							<li>&copy; Haoyu Wang, 2022. All rights reserved</li>
-						</ul>
-					</div>
-				</footer>
+  <a-image class="clickable"
+   src= "#photo" scale="1" width="1" height="1" rotation="0 90 0" position="-2.5 1.7 -1.8"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 90 0" position="-2.53 1.7 -1.8"
+    color="white" align="center"
+    value="PHOTOGRAPHY
+    AS URBAN INQUIRY
+    (Updated by Chance)"
+    weblink="url: https://haoyuwang93.github.io/photo/">
+  </a-text>
 
-	</body>
-</html>
+  <a-image class="clickable"
+   src= "#pencil" scale="1" width="1" height="1" rotation="0 90 0" position="-2.5 1.7 -0.6"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
+
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 90 0" position="-2.53 1.7 -0.6"
+    color="white" align="center"
+    value="PENCIL BUILDING
+    Architectural Design
+    Vernacular Tokyo"
+    weblink="url: pencil.html">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#office" scale="1" width="1" height="1" rotation="0 90 0" position="-2.5 1.7 0.6"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
+
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 -90 0" position="-2.53 1.7 0.6"
+    color="white" align="center"
+    value="LIVE-IN-OFFICE
+    Renovation Design
+    After Work-from-home"
+    weblink="url: office.html">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#tallinn"scale="1" width="1" height="1" rotation="0 90 0" position="-2.5 1.7 1.8"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
+
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 90 0" position="-2.53 1.7 1.8"
+    color="white" align="center"
+    value="SETTLED NOMADS
+    Urban Design
+    Placeless Tallinn"
+    weblink="url: tallinn.html">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#tangshan"scale="1" width="1" height="1" rotation="0 180 0" position="1.4 1.7 2.5"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
+
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 180 0" position="1.4 1.7 2.53"
+    color="white" align="center"
+    value="TURNING POINT
+    Urban Design
+    Grey -> Green"
+    weblink="url: port.html">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#cafe"scale="1" width="1" height="1" rotation="0 180 0" position="0.2 1.7 2.5"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
+
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 180 0" position="0.2 1.7 2.53"
+    color="white" align="center"
+    value="CREATIVE CAFE
+    Integrated Design
+    With/ without voice"
+    weblink="url: cafe.html">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#convertible"scale="1" width="1" height="1" rotation="0 180 0" position="-1 1.7 2.5"
+   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
+   animation__close="startEvents: click; property: scale; to: 1; delay: 4000;">
+  </a-image>
+
+  <a-text class="clickable" line-height="85"
+    geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
+    width="2.2" rotation="0 180 0" position="-1 1.7 2.53"
+    color="white" align="center"
+    value="CONVERTIBLE OFFICE
+    Interior Design
+    Pinifarina on Time"
+    weblink="url: convertible.html">
+  </a-text>
+
+</a-scene>
+
+</body>
+</html
