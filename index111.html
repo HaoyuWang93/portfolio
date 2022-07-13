@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Haoyu Wang</title>
+<script src="aframe/aframe.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/custom.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <script>
+  AFRAME.registerComponent("enter0", {
+    init: function() {
+       var pieces = document.querySelectorAll(".act, .clickable")
+       this.el.addEventListener("click", e => {
+         for (let piece of pieces) {
+           piece.emit("show0")}
+       }, {once: true})
+     }
+  })
+
+
+  AFRAME.registerComponent("weblink", {
+  schema: {
+    url: {
+      default: ""
+    }
+  },
+  init: function() {
+    this.el.addEventListener("click", (e) => {
+      window.location = this.data.url;
+    })
+  }
+})
+</script>
+
+<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse"
+loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
+<a-camera wasd-controls-enabled="false"></a-camera>
+
+  <a-assets>
+    <img id="sky" src="images/home.jpg" alt="background">
+    <img id="paradise" src="images/cover/paradise.jpg" alt="">
+    <img id="fiction" src="images/cover/fiction.jpg" alt="">
+    <img id="megastructure" src="images/cover/megastructure.jpg" alt="">
+    <img id="photo" src="images/cover/photo.jpg" alt="">
+    <img id="port" src="images/cover/port.jpg" alt="">
+    <img id="pencil" src="images/cover/pencil.jpg" alt="">
+    <img id="office" src="images/cover/office.jpg" alt="">
+    <img id="tallinn" src="images/cover/tallinn.jpg" alt="">
+    <img id="tangshan" src="images/cover/tangshan.jpg" alt="">
+    <img id="shinjuku" src="images/cover/shinjuku.jpg" alt="">
+    <img id="cafe" src="images/cover/cafe.jpg" alt="">
+    <img id="convertible" src="images/cover/convertible.jpg" alt="">
+  </a-assets>
+
+  <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+
+  <a-text line-height="55" width="2.5" rotation="0 0 0"
+    color="black" align="center" position="0 2.05 -2.5"
+    value="ARCHITECTURAL FICTION">
+  </a-text>
+
+  <a-text line-height="65" width="2" rotation="0 0 0"
+    color="black" align="center" position="0 1.6 -2.5"
+    value="Design and Storytelling
+    in Architecture and Urbanism
+
+    Haoyu Wang">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#paradise" alpha-test="0.5"
+   opacity="1" width="1" height="1" rotation="0 90 0" position="2.5 1.7 -1.8"
+   animation__enter="startEvents: mouseenter; property: opacity; to: 0.4; dur: 200;"
+   animation__leave="startEvents: mouseleave; property: opacity; to: 1; dur: 200;"
+   weblink="url: paradise.html">
+  </a-image>
+
+  <a-text line-height="75" width="2.2" rotation="0 -90 0" position="2.51 1.7 -1.8"
+    color="white" align="center"
+    value="NOMADIC Paradise
+    Concept Design
+    The flood past">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#fiction" alpha-test="0.5"
+   opacity="1" width="1" height="1" rotation="0 90 0" position="2.5 1.7 -0.6"
+   animation__enter="startEvents: mouseenter; property: opacity; to: 0.4; dur: 200;"
+   animation__leave="startEvents: mouseleave; property: opacity; to: 1; dur: 200;"
+   weblink="url: https://haoyuwang93.github.io/anotherfuture/">
+  </a-image>
+
+  <a-text line-height="75" width="2.2" rotation="0 -90 0" position="2.51 1.7 -0.6"
+    color="white" align="center"
+    value="COVIDPUNK
+    Interactive Storytelling
+    Another Post-2020">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#megastructure" alpha-test="0.5"
+   opacity="1" width="1" height="1" rotation="0 90 0" position="2.5 1.7 0.6"
+   animation__enter="startEvents: mouseenter; property: opacity; to: 0.4; dur: 200;"
+   animation__leave="startEvents: mouseleave; property: opacity; to: 1; dur: 200;"
+   weblink="url: mega.html">
+  </a-image>
+
+  <a-text line-height="75" width="2.2" rotation="0 -90 0" position="2.51 1.7 0.6"
+    color="white" align="center"
+    value="INFINITE CITY
+    Urban Imagination
+    Placeless sprawl">
+  </a-text>
+
+  <a-image class="clickable"
+   src= "#port" alpha-test="0.5"
+   opacity="1" width="1" height="1" rotation="0 90 0" position="2.5 1.7 1.8"
+   animation__enter="startEvents: mouseenter; property: opacity; to: 0.4; dur: 200;"
+   animation__leave="startEvents: mouseleave; property: opacity; to: 1; dur: 200;"
+   weblink="url: port.html">
+  </a-image>
+
+  <a-text line-height="75" width="2.2" rotation="0 -90 0" position="2.51 1.7 1.8"
+    color="white" align="center"
+    value="HOME PORT
+    Building Installation
+    controlled Wellbeing">
+  </a-text>
+
+</a-scene>
+
+</body>
+</html
