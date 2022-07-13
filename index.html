@@ -38,7 +38,7 @@
 })
 </script>
 
-<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse;"
+<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
 loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
 <a-camera wasd-controls-enabled="false"></a-camera>
 
@@ -60,13 +60,14 @@ loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
 
   <a-sky src="#sky" rotation="0 -90 0"></a-sky>
 
-  <a-text class="clickable" line-height="100" width="3" rotation="0 0 0" scale="1"
+  <a-text class="clickable" line-height="85" width="3" rotation="0 0 0" scale="1"
   geometry="primitive: plane; width: 1.65; height: 0.95;" material="shader: flat; color: white"
   color="black" align="center" position="0 1.7 -2.5"
   animation__oepn="startEvents: click; property: scale; to: 0; dur: 300;"
   animation__close="startEvents: click; property: scale; to: 1; delay: 15000;"
   value="ARCHITECTURAL FICTION
-  Haoyu Wang">
+  Haoyu Wang
+  why19930708@gmail.com">
   </a-text>
 
   <a-text line-height="60" width="1.7" rotation="0 0 0"
@@ -186,7 +187,7 @@ loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
 
   <a-text class="clickable" line-height="85"
     geometry="primitive: plane; width: 1; height: 1;" material="shader: flat; color: black"
-    width="2.2" rotation="0 -90 0" position="-2.53 1.7 0.6"
+    width="2.2" rotation="0 90 0" position="-2.53 1.7 0.6"
     color="white" align="center"
     value="LIVE-IN-OFFICE
     Renovation Design
