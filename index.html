@@ -13,17 +13,6 @@
 <body>
 
   <script>
-  AFRAME.registerComponent("enter0", {
-    init: function() {
-       var pieces = document.querySelectorAll(".act, .clickable")
-       this.el.addEventListener("click", e => {
-         for (let piece of pieces) {
-           piece.emit("show0")}
-       }, {once: true})
-     }
-  })
-
-
   AFRAME.registerComponent("weblink", {
   schema: {
     url: {
@@ -242,7 +231,7 @@ loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
     value="CREATIVE CAFE
     Integrated Design
     With/ without voice"
-    weblink="url: cafe.html">
+    weblink="url: cafe360.html">
   </a-text>
 
   <a-image class="clickable"

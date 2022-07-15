@@ -1,0 +1,78 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Creative Cafe</title>
+<script src="aframe/aframe.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/custom.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div style='position: fixed;
+  top: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+  <a href="https://haoyuwang93.github.io/portfolio/"><button class="button">PORTFOLIO</button></a>
+</div>
+
+<div style='position: fixed;
+  bottom: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+  <a href="cafe.html" target="_blank" rel="noopener noreferrer"><button class="button">CONCEPT</button></a>
+</div>
+
+</head>
+
+<body>
+
+  <script>
+  function startTimer() {
+    setInterval(function() {
+      nextimage();
+    }, 5000);
+    var zahl = 0;
+    var srcs = ["#sky1", "#sky2"]
+
+    function nextimage() {
+    console.log(zahl)
+      $("#skyid").attr("src", srcs[zahl])
+      zahl = (zahl < srcs.length - 1) ? ++zahl : 0
+    }
+  }
+  startTimer()
+
+  AFRAME.registerComponent("weblink", {
+  schema: {
+    url: {
+      default: ""
+    }
+  },
+  init: function() {
+    this.el.addEventListener("click", (e) => {
+      window.location = this.data.url;
+    })
+  }
+})
+</script>
+
+<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
+loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
+<a-camera wasd-controls-enabled="false"></a-camera>
+
+  <a-assets>
+    <img id="sky1" src="images/cafe/360.jpg" alt="background">
+    <img id="sky2" src="images/cafe/360open.jpg" alt="background">
+  </a-assets>
+
+  <a-sky id="skyid" src="#sky1" rotation="0 -90 0"></a-sky>
+
+</a-scene>
+
+</body>
+</html
