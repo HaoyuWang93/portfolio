@@ -47,22 +47,9 @@
   }
   startTimer()
 
-  AFRAME.registerComponent("weblink", {
-  schema: {
-    url: {
-      default: ""
-    }
-  },
-  init: function() {
-    this.el.addEventListener("click", (e) => {
-      window.location = this.data.url;
-    })
-  }
-})
-
 AFRAME.registerComponent("proc0", {
   init: function() {
-     var pieces = document.querySelectorAll(".info, .clickable")
+     var pieces = document.querySelectorAll(".clickable")
      this.el.addEventListener("click", e => {
        for (let piece of pieces) {
          piece.emit("show0")}
@@ -72,7 +59,7 @@ AFRAME.registerComponent("proc0", {
 
 AFRAME.registerComponent("proc1", {
   init: function() {
-     var pieces = document.querySelectorAll(".info, .clickable")
+     var pieces = document.querySelectorAll(".clickable")
      this.el.addEventListener("click", e => {
        for (let piece of pieces) {
          piece.emit("show1")}

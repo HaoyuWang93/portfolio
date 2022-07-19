@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tokyo Pencil Building</title>
+<script src="aframe/aframe.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/custom.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div style='position: fixed;
+  top: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+  <a href="https://haoyuwang93.github.io/portfolio/"><button class="button">PORTFOLIO</button></a>
+</div>
+
+<div style='position: fixed;
+  bottom: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+  <a href="pencil.html"><button class="button">CONCEPT</button></a>
+</div>
+
+</head>
+
+<body>
+
+  <script>
+  AFRAME.registerComponent("weblink", {
+  schema: {
+    url: {
+      default: ""
+    }
+  },
+  init: function() {
+    this.el.addEventListener("click", (e) => {
+      window.location = this.data.url;
+    })
+  }
+})
+</script>
+
+<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
+loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
+<a-camera wasd-controls-enabled="false"></a-camera>
+
+  <a-assets>
+    <img id="sky" src="images/pencil/3601.jpg" alt="background">
+  </a-assets>
+
+  <a-sky id="skyid" src="#sky" rotation="0 -90 0"></a-sky>
+
+    <a-text line-height="75"
+      width="1.5" rotation="0 -67 0" position="1 2 -0.5"
+      color="white" align="center"
+      value="Despite the Post-Bubble decline of birth and marriage rate, Tokyo sustains a thriving rental
+      market for its education/ employment opportunities drawing young (single) migrants.
+      The demand for independent and affordable space shines lights on pencil building:
+      A vernacular typology of tall buildings standing on tiny footprints in high-density blocks.
+
+      What does a typical pencil building site look like?
+      Exactly like where you are standing!">
+    </a-text>
+
+    <a-text class="clickable" line-height="75"
+      geometry="primitive: plane; width: 1; height: 0.9;" material="opacity:0.2; shader: flat; color: red"
+      width="3" rotation="-90 0 37" position="0.27 0 -0.35" opacity="1"
+      color="white" align="center"
+      value="Now, imagine
+      a pencil dwelling
+      raising upon this
+      21sqm Parking!"
+      animation__flash="property: opacity; to: 0.5; loop: true; dir: alternate; dur: 600"
+      weblink="url: tokyo3602.html">
+    </a-text>
+
+</a-scene>
+
+</body>
+</html
