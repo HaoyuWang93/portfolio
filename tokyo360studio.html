@@ -27,16 +27,6 @@
   <a href="tokyo-c.html"><button class="button">CONCEPT</button></a>
 </div>
 
-<div style='position: fixed;
-  bottom: 15px;
-  left: 120px;
-  width:100%;
-  text-align: left;
-  z-index: 1;'>
-  <a href="tokyo360.html"><button class="button">BACK</button></a>
-</div>
-</head>
-
 <body>
 
   <script>
@@ -59,45 +49,33 @@ loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
 <a-camera wasd-controls-enabled="false"></a-camera>
 
   <a-assets>
-    <img id="sky" src="images/pencil/3602.jpg" alt="background">
+    <img id="sky" src="images/pencil/360studio.jpg" alt="background">
+    <img id="section" src="images/pencil/section.jpg" alt="">
   </a-assets>
 
   <a-sky id="skyid" src="#sky" rotation="0 -90 0"></a-sky>
 
-    <a-text line-height="75"
-      width="1.5" rotation="0 -90 0" position="1 1.4 0.25"
-      color="white"
-      value="SOLO UNIVERSE:
-      One-unit-per-floor paradigm
-      without annoying nextdoors;
-
-      SUPER LOCATION:
-      Walk down to everything
-      other than bed & bath;
-
-      NO LONELINESS:
-      ...wait, really?
-      Only talk to screens?
-      Hmmmmm...">
-    </a-text>
-
-    <a-text line-height="75"
-      width="3.7" rotation="-90 0 180" position="0 0 3"
-      color="white" align="center"
-      value="THE ONLY
-      COMMUNAL
-      SPACE">
+    <a-text line-height="75" align="right"
+      width="2" rotation="0 90 0" position="-1 1.3 -1.5"
+      color="black"
+      value="This week's challenge
+      on pencil building
+      has got some
+      awesome works!">
     </a-text>
 
     <a-text class="clickable" line-height="75"
-      geometry="primitive: plane; width: 1.5; height: 0.35;" material="opacity:0.2; shader: flat; color: red"
-      width="2.5" rotation="-45 30 0" position="-1.4 0 -1.9" opacity="1"
-      color="white" align="center"
-      value="How about a switch between
-      TOGETHER and SOLO?"
+      geometry="primitive: plane; width: 0.75; height: 0.25;" material="opacity: 0"
+      width="4" rotation="0 180 0" position="0.2 0 3" opacity="1"
+      color="red" align="center"
+      value="<- BACK"
       animation__flash="property: opacity; to: 0.5; loop: true; dir: alternate; dur: 600"
-      weblink="url: tokyo3603.html">
+      weblink="url: tokyo3604.html">
     </a-text>
+
+    <a-image src="#section" width="1.4" height="1.8"
+    rotation="0 90 0" position="-0.8 1.5 0.3">
+  </a-image>
 
 </a-scene>
 
