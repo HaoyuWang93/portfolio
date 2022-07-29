@@ -1,0 +1,123 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Convertible Office</title>
+<script src="aframe/aframe.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/custom.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div style='position: fixed;
+  top: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+  <a href="https://haoyuwang93.github.io/portfolio/"><button class="button">PORTFOLIO</button></a>
+</div>
+
+<div style='position: fixed;
+  bottom: 15px;
+  left: 20px;
+  width:100%;
+  text-align: left;
+  z-index: 1;'>
+  <a href="convertible.html"><button class="button">CONCEPT</button></a>
+</div>
+
+</head>
+
+<body>
+
+  <script>
+  AFRAME.registerComponent("weblink", {
+  schema: {
+    url: {
+      default: ""
+    }
+  },
+  init: function() {
+    this.el.addEventListener("click", (e) => {
+      window.location = this.data.url;
+    })
+  }
+})
+</script>
+
+<a-scene raycaster="objects: .clickable" cursor="rayOrigin: mouse; fuse: false;"
+loading-screen="dotsColor: black; backgroundColor: #F1F1F1">
+<a-camera wasd-controls-enabled="false"></a-camera>
+
+  <a-assets>
+    <img id="sky" src="images/convertible/conf1.jpg" alt="background">
+    <img id="screen" src="images/convertible/screen.png" alt="screen">
+    <img id="group" src="images/icon/group.png" alt="group">
+    <img id="indi" src="images/icon/indi.png" alt="indi">
+    <img id="conf" src="images/icon/conf.png" alt="conf">
+    <img id="off" src="images/icon/off.png" alt="off">
+    <img id="circle" src="images/icon/circle.png" alt="circle">
+  </a-assets>
+
+  <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+
+    <a-image id="screen"
+      src="#screen" width="0.6" height="1.2" rotation="0 -90 0"
+      position="1 1.4 0">
+    </a-image>
+
+    <a-image class="clickable"
+      src="#indi" width="0.15" height="0.15" rotation="0 -90 0"
+      position="0.9 1.75 -0.15"
+      animation__flash="property: opacity; from:1; to: 0.3; loop: true; dir: alternate; dur: 600"
+      weblink="url: conver360-indi1.html">
+    </a-image>
+
+    <a-image
+      src="#conf" width="0.15" height="0.15" rotation="0 -90 0"
+      position="0.9 1.48 -0.15">
+    </a-image>
+
+    <a-image class="clickable"
+      src="#group" width="0.15" height="0.15" rotation="0 -90 0"
+      position="0.9 1.23 -0.15"
+      animation__flash="property: opacity; from:1; to: 0.3; loop: true; dir: alternate; dur: 600"
+      weblink="url: conver360-group1.html">
+    </a-image>
+
+    <a-image class="clickable"
+      src="#off" width="0.15" height="0.15" rotation="0 -90 0"
+      position="0.9 0.98 -0.15"
+      animation__flash="property: opacity; from:1; to: 0.3; loop: true; dir: alternate; dur: 600"
+      weblink="url: conver360-off1.html">
+    </a-image>
+
+    <a-image class="clickable"
+      src="#circle" width="1" height="1" rotation="90 0 0"
+      position="-1.2 0 -4.5" scale="1 1 1"
+      animation__flash="property: scale; to: 0.8 0.8 0.8; loop: true; dir: alternate; dur: 600"
+      weblink="url: conver360-conf2.html">
+    </a-image>
+
+    <a-text line-height="85"
+      width="0.9" rotation="0 90 0" position="-0.95 1.55 0"
+      color="white" align="center"
+      value="21 office desks, 1 conference room,
+      at least 2 group workspace,
+      and 2 enclosed office rooms,
+      all in this 2345 sqft room?
+      ... Well,
+      they won't need them all at once, right?
+
+      UM Interior Design Studio
+      Prof. Carmen Guerrero; Teammate: Yang Liao,
+      Client: Pinifarina Miami Office,
+      WALLBOT technical inspiration:
+      Chun Lun Otto Ng, MIT Media Lab;">
+    </a-text>
+
+</a-scene>
+
+</body>
+</html
