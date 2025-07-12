@@ -81,3 +81,28 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* image marker */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Base styles for ALL markers */
+.clickable-marker {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease;
+}
+
+.clickable-marker:hover {
+    transform: translate(-50%, -50%) scale(1.5);
+}
