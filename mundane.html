@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>RETRACING MUNDANENESS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/addup.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+	<style>
+	.random-image-set {
+    cursor: pointer;
+    margin: 10px; /* Add some space between images */
+    transition: transform 0.3s ease;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 700px;
+	}
+
+	.random-image-set:active {
+    transform: scale(0.97);
+	}
+	</style>
+
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner"></div>
+
+					<!-- Nav -->
+						<nav>
+							<ul>
+								<li><a href="#menu">Menu</a></li>
+							</ul>
+						</nav>
+					</div>
+					</header>
+
+					<!-- Menu -->
+
+						<nav id="menu" style="padding:15px;">
+							<h2>Menu</h2>
+							<ul>
+								<li><a href="index.html">PORTFOLIO</a></li>
+							</ul>
+						</nav>
+
+					<!-- Main -->
+						<div id="main">
+							<div class="inner"
+							style="padding: 30px; max-width: 1000px; margin: auto; text-align: center">
+								<header style="padding: 2em 0 0.1em 0">
+									<h1>RETRACING MUNDANES - Have I Lived Here Before?</h1>
+									<p>This research project rediscovers different places I lived by training AI image generation models on curated datasets of mundane photo snapshots from my everyday routines. 
+										As an architect and digital artist, I have been chasing radical ideas of virtual and physical spaces. While dedicating my passion to studio works and inspiration trips, 
+										I rarely connected my imagination with the mundane places I lived throughout my journey across China, the US, Japan, and Europe. These places exist as fragmented memories 
+										captured by thousands of everyday snapshots from my commuting, shopping, weekend hangouts, and evening walks. On the other hand, I find their mundaneness strangely resonating with 
+										the speculative ideas of my artistic journey.<br>
+										<br>What are my hidden impressions of these places? 
+										<br>Have they been shaping my imagination? 
+										<br>Can I find unexpected inspiration behind their mundaneness?
+										<br>...
+										<br>What if AI randomly remix things from my fragmented memories to reimagine the place?</p><br>
+										<h2>[ Click the snapshots to switch ]</h2>
+
+									<img src="images/mundane/miami/image (1).jpg" class="random-image-set" data-folder="miami" data-count="50"  alt="Click to switch scenes">
+									<sub style="font-size: 14pt; font-style: italic">Have I lived in Miami and cycled under the metrorail between 2012 and 2017?</sub><br><br>
+
+									<img src="images/mundane/sanleandro/image (1).jpg" class="random-image-set" data-folder="sanleandro" data-count="50"  alt="Click to switch scenes">
+									<sub style="font-size: 14pt; font-style: italic">Have I lived in San Leandro and quarantined for COVID between 2020 and 2023?</sub><br><br>
+
+									<sub style="font-size: 14pt; font-style: italic">...<br>
+										Have I lived in Tokyo and explored different stations on my way home in 2017?<br>
+										...<br>
+										Have I lived in Boston and roamed along Charles River between 2018 and 2020?<br>
+										...<br>
+										Have I lived in Zhengzhou and walked across old neighborhoods for grocery before 2012?<br>
+										...<br>
+										Have I been living in Helsinki since 2023?<br>
+										...<br>
+										...to be updated...
+									</sub><br><br>
+
+									<p>As an open-ended research, the project explores different methods of data curation, AI training, and image generation to retrace mundaneness. Current experiments train 
+										Stable Diffusion XL models with 50-100 captioned snapshots for each place. Then, I generate hundreds of textual prompts with random combinations of 3-5 keywords from 
+										the training image captions to visualize alternative and often unexpected imagery of the place. The next steps will introduce my speculative design as additional data input to 
+										reconnect the radical impulses between the imagined and mundaneness of my artistic journey. Stay tuned for updates!</p>
+
+								</header>
+
+								<br><br><br>
+								<a href="index.html"><button class="black" style="margin: 0 auto; display: block;">PORTFOLIO</button></a>
+							</div>
+						</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+			// Find all elements with the class 'random-image-set'
+const imageSets = document.querySelectorAll('.random-image-set');
+
+// Loop through each image set element
+imageSets.forEach(imageElement => {
+    // Add a click event listener to each one
+    imageElement.addEventListener('click', function() {
+        // Get the specific data from the element that was clicked
+        const folder = imageElement.dataset.folder; // e.g., 'set1'
+        const count = parseInt(imageElement.dataset.count); // e.g., 50
+        
+        // Generate a random number for this specific set
+        const randomIndex = Math.floor(Math.random() * count) + 1;
+        
+        // Construct the new image path based on its data
+        // Assumes naming like image-1.jpg, image-2.jpg etc.
+        const newImage = `images/mundane/${folder}/image (${randomIndex}).jpg`; 
+        
+        // Update the src of the clicked image
+        imageElement.src = newImage;
+    });
+});
+</script>
+
+	</body>
+</html>

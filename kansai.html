@@ -9,6 +9,33 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 
+	<style>
+        #delayedButton {
+            /* Hide the button initially but keep its space */
+            visibility: hidden;
+            opacity: 0;
+
+            /* Add a smooth fade-in effect */
+            transition: visibility 0s, opacity 0.5s linear;
+        }
+
+        /* This class will be added by JavaScript to show the button */
+        #delayedButton.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+
+	<script>
+    // Set a timer for 3 seconds
+    setTimeout(function() {
+        // Find the button by its ID
+        const button = document.getElementById('delayedButton');
+        // Add the 'visible' class to make it appear
+        button.classList.add('visible');
+    }, 3000); // 3000 milliseconds = 5 seconds
+	</script>
+
 	<body class="is-preload" style="background-color: black">
 
 		<!-- Wrapper -->
@@ -41,11 +68,11 @@
 								style="max-width: 900px; margin: auto;">
 									<header style="padding: 2em 0 0.1em 0">
 										<video loop class="video" src="images/kansai/kansai-video.mp4" type="video/mp4" autoplay muted playsinline webkit-playsinline></video>
-										<br><a href="kansaimap.html"><button class="white" style="margin: 0 auto; display: block;">THE (NON-EXIST) KANSAI CITY ->> </button></a>
+										<br><a href="kansaimap.html"><button id="delayedButton" class="white" style="margin: 0 auto; display: block;">THE (NON-EXIST) KANSAI CITY ->> </button></a>
 									<br><p style="text-align: center; font-style: italic; color: white">A project supported by Space Department Nara
 										<br>stay tuned for updates!
 									</p>
-											</header>
+										</header>
 								</div>
 							</div>
 
