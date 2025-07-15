@@ -71,10 +71,10 @@
 										<br>What if AI randomly remix things from my fragmented memories to reimagine the place?</p><br>
 										<h2>[ Click the snapshots to switch ]</h2>
 
-									<img src="images/mundane/miami/image (1).jpg" class="random-image-set" data-folder="miami" data-count="50"  alt="Click to switch scenes">
+									<img src="images/mundane/miami/image (1).jpg" class="random-image-set" data-folder="miami" data-count="30"  alt="Click to switch scenes">
 									<sub style="font-size: 14pt; font-style: italic">Have I lived in Miami and cycled under the metrorail between 2012 and 2017?</sub><br><br>
 
-									<img src="images/mundane/sanleandro/image (1).jpg" class="random-image-set" data-folder="sanleandro" data-count="50"  alt="Click to switch scenes">
+									<img src="images/mundane/sanleandro/image (1).jpg" class="random-image-set" data-folder="sanleandro" data-count="30"  alt="Click to switch scenes">
 									<sub style="font-size: 14pt; font-style: italic">Have I lived in San Leandro and quarantined for COVID between 2020 and 2023?</sub><br><br>
 
 									<sub style="font-size: 14pt; font-style: italic">...<br>
@@ -119,7 +119,7 @@ imageSets.forEach(imageElement => {
     imageElement.addEventListener('click', function() {
         // Get the specific data from the element that was clicked
         const folder = imageElement.dataset.folder; // e.g., 'set1'
-        const count = parseInt(imageElement.dataset.count); // e.g., 50
+        const count = parseInt(imageElement.dataset.count); // e.g., 30
         
         // Generate a random number for this specific set
         const randomIndex = Math.floor(Math.random() * count) + 1;
