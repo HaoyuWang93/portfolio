@@ -106,3 +106,49 @@
 .clickable-marker:hover {
     transform: translate(-50%, -50%) scale(1.5);
 }
+
+/*interactive map*/
+#map {
+      width: 100%;
+      height: 900px; /* Adjust based on your portfolio design */
+      border-radius: 10px;
+}
+
+.leaflet-popup-content img {
+            width: 100%;
+            max-width: 500px; /* Prevents giant images from breaking the pop-up */
+            height: auto;
+            border-radius: 3px;
+}
+.leaflet-popup-content {
+            margin: 10px;
+            text-align: center;
+}
+
+		/* Container to hold both images */
+.image-crossfade-container {
+    		position: relative;
+    		width: 100%;
+}
+
+		/* The bottom image (Random Replacement) */
+.alt-img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			object-fit: cover; /* Ensures it matches the original photo's dimensions */
+			border-radius: 2px;
+}
+
+		/* The top image (Original Photo) */
+.original-img {
+			position: relative;
+			z-index: 2;
+			width: 100%;
+			display: block;
+			border-radius: 2px;
+			/* The transition is handled via JS so we can instantly reset it on re-click */
+}
