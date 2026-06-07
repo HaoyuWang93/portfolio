@@ -44,10 +44,12 @@
 									<header style="padding: 2em 0 0.1em 0">
 									<h1 style="text-align: center; color: white">Kansai Locality from AI's Lens</h1>
 									<p style="text-align: center; font-style: italic; color: white">
-										The map locates 300 photos that were taken during my 2024 urban research across the Kansai region;
-										<br> these photos are captioned to train an SDXL LoRA model for synthetic urban imagination.
-										<br><br>Click the pins to see my snapshot turning into randomly pulled AI scenes of the Synthetic Kansai;
-										<br>the scenes are generated under dynamic prompting that randomly picks keywords from my research observation.
+										The map locates 300 photo-taking spots of my 2024 urban research across the Kansai region;
+										<br> the photos are captioned to train SDXL LoRA models for synthetic urban imagination.
+										<br><br>Click the pins to see local urban forms transforming into AI-generated alternatives;
+										<br>the AI scenes are generated under loose control of dynamic prompting, 
+										<br>which randomly combines keywords from my photo captions (e.g. shopping arcade, train platform) 
+										<br>and my research notes (e.g. mixed-use, sustainable) to shape familiar-yet-fictional scenarios.
 									</p>
 
 	<body>
@@ -55,16 +57,6 @@
 		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 		
     	<script>
-		const replacementCounts = {
-    	'A': 33,
-    	'B': 58, 
-    	'C': 38,
-    	'D': 60,
-    	'E': 57,
-    	'F': 40,
-    	'G': 36,
-    	'H': 40,
-		};
         // 3. Initialize the map (coordinates are [Latitude, Longitude], Zoom Level)
         // Set this roughly to the center of your region
         const map = L.map('map').setView([34.7063, 135.5378], 10); 
@@ -84,22 +76,25 @@
 				if (feature.properties && feature.properties.description) {    
                 const descriptionString = feature.properties.description;
 				let originalPath = "";
-				let groupLetter = "A"; // Default fallback
+				let altPath = "";
 
-				// Regex to capture the Group Letter (Group 1) and the Number (Group 2)
-				const fileMatch = descriptionString.match(/File:\s*([A-H])_photo_(\d+)\.jpg/i);
+				// 1. Regex to capture JUST the number from "File: photo_25.jpg"
+				const fileMatch = descriptionString.match(/File:\s*kansaiphoto_(\d+)\.jpg/i);
 
-				if (fileMatch) {
-					groupLetter = fileMatch[1].toUpperCase();
-					const photoNum = fileMatch[2];
-					originalPath = `images/kansai/groupedphoto/${groupLetter}_photo_${photoNum}.jpg`; 
+				if (fileMatch && fileMatch[1]) {
+					const photoNum = fileMatch[1];
+					
+					// 2. Construct both specific paths using that exact number
+					originalPath = `images/kansai/photo/kansaiphoto_${photoNum}.jpg`; 
+					altPath = `images/kansai/kansaism/kansaism_${photoNum}.jpg`;
 				}
 
-				// Build the pop-up with BOTH images, and save the group letter as a data attribute
+				// 3. Build the pop-up containing both images, letting CSS stack them
 				const popupContent = `
-					<div class="image-crossfade-container" data-group="${groupLetter}">
-						<img class="alt-img" loading="lazy" alt="Replacement Photo">
-						<img src="${originalPath}" class="original-img" loading="lazy" alt="Original Photo">
+					<div class="image-crossfade-container">
+						${altPath ? `<img src="${altPath}" class="alt-img" loading="lazy" alt="Replacement Photo">` : ''}
+						
+						${originalPath ? `<img src="${originalPath}" class="original-img" loading="lazy" alt="Original Photo">` : `<em>Image not found</em>`}
 					</div>
 				`;
 
@@ -108,7 +103,6 @@
 					minWidth: 500,
 					autoPan: false
 				});
-
 					// 2. Add a click listener to center the pop-up
 					layer.on('click', function(e) {
     				// Get the absolute pixel coordinates of the clicked pin
@@ -129,31 +123,26 @@
     .catch(error => console.error('Error loading the GeoJSON data:', error));
 
 	// Listen for any pop-up opening on the map
-map.on('popupopen', function(e) {
+	map.on('popupopen', function(e) {
     const popupNode = e.popup.getElement();
     const container = popupNode.querySelector('.image-crossfade-container');
     
     if (container) {
         const originalImg = container.querySelector('.original-img');
-        const altImg = container.querySelector('.alt-img');
-        const groupLetter = container.getAttribute('data-group');
         
-        // 1. Instantly snap the top photo back to 100% visibility (in case it was clicked previously)
+        // 1. Instantly snap the top photo back to 100% visibility
+        // (Crucial so it resets if the user clicks the exact same pin a second time)
         originalImg.style.transition = 'none';
         originalImg.style.opacity = '1';
         
-        // 2. Pick a fresh random replacement image from the corresponding group
-        const maxAlts = replacementCounts[groupLetter] || 1;
-        const randomAltNum = Math.floor(Math.random() * maxAlts) + 1;
-        altImg.src = `images/kansai/kansaismalt/${groupLetter}_kansaism_${randomAltNum}.jpg`;
-
-        // 3. Wait 1 second (1000ms), then trigger the smooth CSS fade out
+        // 2. Wait 1 second (1000ms), then trigger the smooth CSS fade out
+        // This reveals the specific alt photo waiting underneath
         setTimeout(() => {
             originalImg.style.transition = 'opacity 1s ease-in-out';
             originalImg.style.opacity = '0';
         }, 1000); 
     }
-});
+	});
     </script>
 	
 				<br><br><br><a href="kansairesearch.html"><button class="white" style="margin: 0 auto; display: block;">RESEARCH</button></a>
