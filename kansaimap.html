@@ -42,11 +42,11 @@
 								<div class="inner"
 								style="max-width: 1000px; margin: auto;">
 									<header style="padding: 2em 0 0.1em 0">
-									<h1 style="text-align: center; color: white">Kansai Locality from AI's Lens</h1>
+									<h1 style="text-align: center; color: white">Synthetic Representation of Kansai Urbanism</h1>
 									<p style="text-align: center; font-style: italic; color: white">
-										The map locates 300 photo-taking spots of my 2024 urban research across the Kansai region;
-										<br> the photos are captioned to train SDXL LoRA models for synthetic urban imagination.
-										<br><br>Click the pins to see local urban forms transforming into AI-generated alternatives;
+										The map locates 300 photos from my 2024 urban research across the Kansai region;
+										<br> the photos are processed as AI training materials to embed local urban concepts into SDXL LoRA models.
+										<br><br>Click the pins to see my local snapshots transforming into AI synthetic imaginaries;
 										<br>the AI scenes are generated under loose control of dynamic prompting, 
 										<br>which randomly combines keywords from my photo captions (e.g. shopping arcade, train platform) 
 										<br>and my research notes (e.g. mixed-use, sustainable) to shape familiar-yet-fictional scenarios.
@@ -111,7 +111,7 @@
     				// Subtract ~150 pixels from the Y-axis. 
     				// This targets a point above the pin, forcing the map to shift downward 
     				// so the pop-up image sits perfectly in the middle of your container.
-    				px.y -= 200; 
+    				px.y -= 250; 
     
     				// Smoothly pan the map to our new calculated center point
     				map.panTo(map.unproject(px), { animate: true });
@@ -145,8 +145,7 @@
 	});
     </script>
 	
-				<br><br><br><a href="kansairesearch.html"><button class="white" style="margin: 0 auto; display: block;">RESEARCH</button></a>
-				<br><a href="kansai.html"><button class="white" style="margin: 0 auto; display: block;">BACK</button></a>
+		<br><br><a href="kansairesearch.html"><button class="white" style="margin: 0 auto; display: block;">RESEARCH</button></a>
 		</body>
 		</div>
 	</div>
@@ -157,6 +156,5 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>

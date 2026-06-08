@@ -24,16 +24,133 @@
             visibility: visible;
             opacity: 1;
         }
+
+		.dynamic-tile-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+			gap: 5px; /* Adjust the space between tiles */
+			max-width: 100%;
+			margin: 0 auto; /* Centers the grid on the page */
+		}
+
+		.tile {
+			aspect-ratio: 1 / 1; /* Keeps the tile perfectly square */
+			background-color: #000; /* Creates the black-screen transition background */
+			overflow: hidden;
+			position: relative;
+			border-radius: 2px; /* Optional: slight rounding on the corners */
+		}
+
+		.tile img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover; /* Ensures the image fills the square without stretching */
+			opacity: 0; /* Start hidden so we can fade them in initially */
+			
+			/* 0.1s fade out + 0.1s fade in = 0.2s total transition time */
+			transition: opacity 0.1s ease-in-out; 
+		}
+
+		/* Keeps the center title image permanently visible without fading */
+		.tile img.static-title {
+			opacity: 1 !important;
+			transition: none !important;
+		}
     </style>
 
 	<script>
-    // Set a timer for 3 seconds
+    // Set a timer for 3 seconds for the next-page button
     setTimeout(function() {
         // Find the button by its ID
         const button = document.getElementById('delayedButton');
         // Add the 'visible' class to make it appear
         button.classList.add('visible');
-    }, 3000); // 3000 milliseconds = 5 seconds
+    }, 3000); // 3000 milliseconds = 3 seconds
+	</script>
+
+	<script>
+	document.addEventListener("DOMContentLoaded", () => {
+    const totalImages = 100;
+    const grid = document.getElementById('tileGrid');
+    
+    // A Set to track currently displayed dynamic images
+    let currentlyShowing = new Set(); 
+
+    // 1. Helper function to get a random unique image
+    function getUniqueRandomImage() {
+        let rand;
+        do {
+            rand = Math.floor(Math.random() * totalImages) + 1;
+        } while (currentlyShowing.has(rand) && currentlyShowing.size < totalImages);
+        return rand;
+    }
+
+    // 2. Initialize the 9 tiles
+    for (let i = 0; i < 9; i++) {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        const img = document.createElement('img');
+
+        // Check if this is the center tile (Index 4 is the 5th tile)
+        if (i === 4) {
+            
+            // Build the static center tile
+            img.src = 'images/kansai/title.jpg'; 
+            img.className = 'static-title'; // Apply our new CSS rule
+            img.alt = 'Portfolio Title';
+            
+            tile.appendChild(img);
+            grid.appendChild(tile);
+            
+            // Notice we DO NOT call startTileCycle() here.
+            
+        } else {
+            
+            // Build the standard dynamic tiles for all other spots
+            const initialImgNum = getUniqueRandomImage();
+            
+            currentlyShowing.add(initialImgNum);
+            img.src = `images/kansai/tile/tile_${initialImgNum}.jpg`;
+            img.dataset.currentNum = initialImgNum;
+            img.alt = 'Dynamic Portfolio Image';
+            
+            tile.appendChild(img);
+            grid.appendChild(tile);
+
+            // Stagger the initial fade-in
+            setTimeout(() => {
+                img.style.opacity = '1';
+                startTileCycle(img);
+            }, i * 100); 
+        }
+    }
+
+    // 3. The recurring cycle for dynamic tiles ONLY
+    function startTileCycle(img) {
+        const displayDuration = Math.random() * 2000 + 1000;
+
+        setTimeout(() => {
+            img.style.opacity = '0';
+
+            setTimeout(() => {
+                currentlyShowing.delete(parseInt(img.dataset.currentNum));
+                
+                const newNum = getUniqueRandomImage();
+                currentlyShowing.add(newNum);
+                
+                img.onload = () => {
+                    img.style.opacity = '1';
+                    startTileCycle(img); 
+                };
+                
+                img.src = `images/kansai/tile/tile_${newNum}.jpg`;
+                img.dataset.currentNum = newNum;
+
+            }, 100); // CSS fade-out duration
+
+        }, displayDuration);
+    }
+});
 	</script>
 
 	<body class="is-preload" style="background-color: black">
@@ -55,7 +172,6 @@
 					</header>
 
 					<!-- Menu -->
-
 						<nav id="menu" style="padding:15px;">
 							<h2>Menu</h2>
 							<ul>
@@ -67,12 +183,12 @@
 								<div class="inner"
 								style="max-width: 900px; margin: auto;">
 									<header style="padding: 2em 0 0.1em 0">
-										<video loop class="video" src="images/kansai/kansai-video.mp4" type="video/mp4" autoplay muted playsinline webkit-playsinline></video>
-										<br><a href="kansaimap.html"><button id="delayedButton" class="white" style="margin: 0 auto; display: block;">THE (NON-EXIST) KANSAI CITY ->> </button></a>
+										<div class="dynamic-tile-grid" id="tileGrid"></div>
+										<br><a href="kansaimap.html"><button id="delayedButton" class="white" style="margin: 0 auto; display: block;">TO THE (ALTERNATE) KANSAI ->> </button></a>
 									<br><p style="text-align: center; font-style: italic; color: white">A project supported by Space Department Nara
 										<br>stay tuned for updates!
 									</p>
-										</header>
+									</header>
 								</div>
 							</div>
 
