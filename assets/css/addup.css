@@ -109,9 +109,11 @@
 
 /*interactive map*/
 #map {
-      width: 100%;
+      width: 90%;
       height: 900px; /* Adjust based on your portfolio design */
       border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
 }
 
 .leaflet-popup-content img {
