@@ -118,19 +118,39 @@
 
 .leaflet-popup-content img {
             width: 100%;
-            max-width: 500px; /* Prevents giant images from breaking the pop-up */
+            max-width: 450px; /* Prevents giant images from breaking the pop-up */
             height: auto;
             border-radius: 3px;
-}
-.leaflet-popup-content {
-            margin: 10px;
-            text-align: center;
 }
 
 		/* Container to hold both images */
 .image-crossfade-container {
     		position: relative;
     		width: 100%;
+}
+
+@media screen and (max-width: 700px){
+  #map {
+      width: 90%;
+      height: 600px;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
+}
+
+.leaflet-popup-content {
+    margin: 10px !important; 
+    max-width: 300px;
+}
+
+.leaflet-popup-content img {
+            max-width: 100%;
+            max-width: 300px;
+}
+
+  .image-crossfade-container {
+            max-width: 100%;
+  }
 }
 
 		/* The bottom image (Random Replacement) */
